@@ -158,7 +158,7 @@
          </children></VBox>
       <HBox alignment="CENTER_RIGHT" layoutX="250.0" prefHeight="64.0" prefWidth="200.0" styleClass="topBar" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField prefHeight="39.0" prefWidth="420.0" promptText="Type here to search . . . " styleClass="searchBar">
+            <TextField fx:id="searchField" prefHeight="39.0" prefWidth="420.0" promptText="Type here to search . . . " styleClass="searchBar">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>

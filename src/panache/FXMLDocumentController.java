@@ -69,7 +69,7 @@ public class FXMLDocumentController implements Initializable {
             osr = new OutputStreamWriter(os);
             br = new BufferedReader(isr);
             bw = new BufferedWriter(osr);
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -77,44 +77,50 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void loginButtonAction(ActionEvent event) {
-//        System.out.println("login action");
-//        String uname = username.getText();
-//        
-//        String pass = password.getText();
-//        String str;
-//        try{
-//            str = uname+"\n";
-//            System.out.println(str);
-//            bw.write(str);
-//            str = pass+"\n";
-//            System.out.println(str);
-//            bw.write(str);
-//            str = "null"+"\n";
-//            System.out.println(str);
-//            bw.write(str);
-//            bw.flush();
-//            
-//            String st = br.readLine();
-//            System.out.println(st);
-//            
-//            System.out.println("send");
-//        }catch(Exception ex)
-//        {
-//            System.out.println(ex.getMessage());
-//        }
-
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.setTitle("Panache");
-            //rootPane.setVisible(false);
-            stage.show();
-            ((Node)(event.getSource())).getScene().getWindow().hide(); //to hide current window i.e login window//
-        } catch(IOException e) {
-        }
+        System.out.println("login action");
+        String uname = username.getText();
         
+        String pass = password.getText();
+        String str;
+        try{
+            str = uname+"\n";
+            System.out.println(str);
+            bw.write(str);
+            str = pass+"\n";
+            System.out.println(str);
+            bw.write(str);
+            str = "null"+"\n";
+            System.out.println(str);
+            bw.write(str);
+            bw.flush();
+            
+            String st = br.readLine();
+            System.out.println(st);
+            if(st.compareTo("Logged in Successfully") == 0)
+            {
+                System.out.println("displaying to home page");
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root1));
+                    stage.setTitle("Panache");
+                    //rootPane.setVisible(false);
+                    stage.show();
+                    ((Node)(event.getSource())).getScene().getWindow().hide(); //to hide current window i.e login window//
+                } catch(IOException e) {
+                    System.out.println("not displaying home page");
+                }
+            }
+            else{
+                System.out.println("laude lag gaye");
+            }
+            
+            
+        }catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
         
     }
 

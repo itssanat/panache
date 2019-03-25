@@ -14,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -49,7 +50,9 @@ public class HomePageController implements Initializable {
     GridPane gridPane = new GridPane();
     private int row;
     private File[] preview;
-    final File dir = new File("C:\\Users\\sanat\\Desktop\\preview");
+    final File dir = new File("C:\\Users\\Satvik\\Desktop\\preview");
+    @FXML
+    private TextField searchField;
 
     
     @Override
@@ -92,9 +95,7 @@ public class HomePageController implements Initializable {
 
     @FXML
     private void trendingButtonAction(MouseEvent event) {
-        for(int i = 0 ; i<preview.length ;i++){
-            System.out.println(preview[i].getAbsolutePath());
-        }
+       
     }
 
     @FXML
@@ -112,10 +113,15 @@ public class HomePageController implements Initializable {
             chooser.setDialogTitle("Choose file to play..."); // setting title of title bar //
             chooser.showOpenDialog(null);
             File uploadFile = chooser.getSelectedFile();
- 
+            System.out.println(uploadFile.getAbsolutePath());
+            
+            Video v = new Video(uploadFile,"sat","videoName","tags");
+            v.connect();
+            v.send();
         }
         catch(Exception e){ 
-            
+            System.out.println("Error in uploading video");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -125,6 +131,7 @@ public class HomePageController implements Initializable {
 
     @FXML
     private void searchButtonAction(MouseEvent event) {
+        
     }
     
 }

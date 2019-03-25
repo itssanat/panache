@@ -1,4 +1,3 @@
 # panache
-It is an online video player application for desktop.
-
-This project is under development.
+It is a online video player application for desktop.
+This project is under developement, wait for update...
